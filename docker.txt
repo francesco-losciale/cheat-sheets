@@ -62,8 +62,6 @@ A single container running in a service is called a task. Tasks are given unique
 
 docker stack deploy -c docker-compose.yml getstartedlab         # update the docker-compose.yml file for example scaling the number of replicas and re-running the command
 
-
-
 docker stack rm getstartedlab					# take the app down
 docker swarm leave --force					# take down the swarm
  
