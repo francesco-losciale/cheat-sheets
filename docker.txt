@@ -1,0 +1,75 @@
+docker --version
+docker info
+docker run hello-world
+docker run -it ubuntu bash          # runs a ubuntu container terminal
+docker image ls 					# list all the images downloaded in the machine
+docker container ls 				# list all the running container
+docker container ls --all 			# list all the containers
+
+
+create the Dockerfile which defines what goes inside the container.
+cd where Dockerfile exists
+docker build -t friendly_tag_name .         # builds the image using a tag name
+docker run -p 4000:80 friendly_tag_name     # runs the image mapping the machine's port 4000 to the container's port 80
+docker run -d -p 4000:80 friendly_tag_name  # runs the container in background in detached mode
+docker container stop <container id>        # stops the container
+
+
+docker login 							# freng0 <solita password>
+docker tag friendly_tag_name freng0/get-started:part2		# put the image in the get-started repository using part2 as tag
+docker image ls
+docker push freng0/get-started:part2  				# upload the image in the repository
+docker run -p 4000:80 freng0/get-started:part2 			# run the image in a different way
+
+docker stop $(docker ps -a -q) 				# stop all the docker container 
+docker rm $(docker ps -a -q)				# remove all the docer container
+
+=========================================================================================================================================
+
+Services are really just “containers in production.” A service only runs one image, but it codifies the way that image runs—what ports it should use, how many replicas of the container should run so the service has the capacity it needs, and so on. Scaling a service changes the number of container instances running that piece of software, assigning more computing resources to the service in the process.
+
+docker-compose.yml (yaml syntax)
+
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: username/repo:tag
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:80"
+    networks:
+      - webnet
+networks:
+  webnet:
+
+
+
+docker swarm init						# avoid the error “this node is not a swarm manager.”
+docker stack deploy -c docker-compose.yml getstartedlab   	# create the service
+docker service ls
+docker service ps getstartedlab_web 				# list the tasks for each service
+docker container ls						# can see the services listing the containers as well
+
+A single container running in a service is called a task. Tasks are given unique IDs that numerically increment, up to the number of replicas you defined in.
+
+docker stack deploy -c docker-compose.yml getstartedlab         # update the docker-compose.yml file for example scaling the number of replicas and re-running the command
+
+
+
+docker stack rm getstartedlab					# take the app down
+docker swarm leave --force					# take down the swarm
+ 
+
+
+
+
+
+
