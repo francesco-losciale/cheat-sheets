@@ -88,7 +88,24 @@ docker stack deploy -c docker-compose.yml getstartedlab         # update the doc
 docker stack rm getstartedlab					# take the app down
 docker swarm leave --force					# take down the swarm
  
+==================================================================================================================================
 
+Change dockerd configuration (docker daemon)
+
+sudo vi /lib/systemd/system/docker.service
+Look for the existing ExecStart line:
+
+ExecStart=/usr/bin/docker daemon -H fd://
+
+Add your desired config:
+
+ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:3272
+Restart:
+
+systemctl daemon-reload
+sudo service docker restart
+
+After that, my daemon was listening on 3272 and was ready to go!
 
 
 ============================================================================================================================================
