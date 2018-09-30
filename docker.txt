@@ -92,6 +92,14 @@ docker swarm leave --force					# take down the swarm
 
 Change dockerd configuration (docker daemon)
 
+
+1. This commands might be needed if you have permission issues with .docker folder
+
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "/home/$USER/.docker" -R
+
+2.
+
 sudo vi /lib/systemd/system/docker.service
 Look for the existing ExecStart line:
 
