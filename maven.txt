@@ -1,0 +1,9 @@
+
+
+mvn install -DskipTests													# skip unit tests but compiles them
+mvn install -Dmaven.test.skip=true										# do not even compile the tests - honored by Surefire, Failsafe and the Compiler Plugin
+
+mvn test -Dtest=MyUnitTest												# run a specific unit test
+mvn test -Dtest=MyUnitTest#testMethod									# run a specific unit test method
+
+mvn dependency:tree -Dverbose -Dincludes=commons-collections  			# A project's dependency tree can be expanded to display dependency conflicts. For example, to find out why Commons Collections 2.0 is being used by the Maven Dependency Plugin
