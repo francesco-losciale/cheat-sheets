@@ -1,0 +1,86 @@
+
+# initialization commands
+
+mvn archetype:generate 							# list all the possible archetypes for you to select from.
+							
+mvn -B archetype:generate \				
+	-DarchetypeGroupId=org.apache.maven.archetypes \
+	-DgroupId=com.maven.template.basicJava \
+	-DartifactId=maven-template-java				# create a simple java maven project
+
+####################################################################################################################################################################################################
+	
+mvn archetype:generate \
+-DarchetypeGroupId=org.codehaus.mojo.archetypes \
+-DarchetypeArtifactId=pom-root \
+-DarchetypeVersion=RELEASE						# create parent, specify groupId=com.maven.template.multimodular, artifactId=maven-template-multimodular, packaging=pom
+
+cd maven-template-multimodular
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp	# create a child maven module for a webapp, automatically include it in the parent pom
+
+cd ..
+mvn package
+
+#####################################################################################################################################################################################################
+
+1 . Transitive Dependencies
+
+Maven can discover the libraries that are needed by our own dependencies in our pom.xml and includes them automatically. There’s no limit to the number of dependency levels that the libraries are gathered from.
+The conflict here comes when 2 dependencies refer to different versions of a specific artifact. Which one will be included by Maven?
+The answer here is the “nearest definition”. This means that the version used will be the closest one to our project in the tree of dependencies. This is called dependency mediation.
+Let’s see the following example to clarify the dependency mediation:
+	A -> B -> C -> D 1.4  and  A -> E -> D 1.0
+This example shows that project A depends on B and E. B and E have their own dependencies which encounter different versions of the D artifact. Artifact D 1.0 will be used in the build of A project because the path through E is shorter.
+
+There are different techniques to determine which version of the artifacts should be included:
+1. We can always guarantee a version by declaring it explicitly in our project’s POM. For instance, to guarantee that D 1.4 is used, we should add it explicitly as a dependency in the pom.xml file.
+2. We can use the Dependency Management section. 
+
+Simply put, Dependency Management is a mechanism to centralize the dependency information.
+When we have a set of projects that inherit a common parent, we can put all dependency information in a shared POM file called BOM.
+
+We can then let our submodules inherit from this BOM pom, or better we can include the BOM as a dependency in our dependencyManagement section. 
+The latter is better because we could create more then one BOM while inheriting the BOM from the parent forces us to have only one BOM.
+
+
+
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=RELEASE 		# create parent 
+cd maven-template-multimodular-bom
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=RELEASE		# create child for BOM
+mvn -B archetype:generate \
+	-DarchetypeGroupId=org.apache.maven.archetypes \
+	-DgroupId=com.maven.template.multimodular.bom.java \
+	-DartifactId=maven-template-multimodular-bom-java  											# create java module that will depend on BOM
+
+cd ..
+mvn package
+
+
+2 . Overwriting BOM Dependency
+
+The order of precedence of the artifact’s version is:
+
+    The version of the artifact’s direct declaration in our project pom
+    The version of the artifact in the parent project
+    The version in the imported pom, taking into consideration the order of importing files
+    dependency mediation
+
+    We can overwrite the artifact’s version by explicitly defining the artifact in our project’s pom with the desired version
+    If the same artifact is defined with different versions in 2 imported BOMs, then the version in the BOM file that was declared first will win
+
+
+################################################################################################################################################################################################
+
+mvn dependency:tree 			# Show the dependency tree
+mvn dependency:analyze			# Analyze dependencies: used, unused, declared, undeclared
+mvn dependency:analyze-duplicate 	# Determines duplicate dependencies
+mvn dependency:resolve			# Resolves the project dependencies from the repository
+mvn dependency:resolve-plugin		# Resolves all the plugins
+
+###############################################################################################################################################################################################
+
+
+
+
+
+
