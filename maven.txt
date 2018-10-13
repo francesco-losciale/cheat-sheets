@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 # initialization commands
 
 mvn archetype:generate 							# list all the possible archetypes for you to select from.
