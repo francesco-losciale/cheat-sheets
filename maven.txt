@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 # initialization commands
 
 mvn archetype:generate 							# list all the possible archetypes for you to select from.
@@ -71,16 +72,18 @@ The order of precedence of the artifact’s version is:
 
 ################################################################################################################################################################################################
 
-mvn dependency:tree 			# Show the dependency tree
-mvn dependency:analyze			# Analyze dependencies: used, unused, declared, undeclared
-mvn dependency:analyze-duplicate 	# Determines duplicate dependencies
-mvn dependency:resolve			# Resolves the project dependencies from the repository
-mvn dependency:resolve-plugin		# Resolves all the plugins
+mvn dependency:tree 						# Show the dependency tree
+mvn dependency:tree -Dverbose -Dincludes=commons-collections  	# find out why Commons Collections 2.0 is being used by the Maven Dependency Plugin
+mvn dependency:analyze						# Analyze dependencies: used, unused, declared, undeclared
+mvn dependency:analyze-duplicate 				# Determines duplicate dependencies
+mvn dependency:resolve						# Resolves the project dependencies from the repository
+mvn dependency:resolve-plugin					# Resolves all the plugins
 
 ###############################################################################################################################################################################################
 
+mvn install -DskipTests													# skip unit tests but compiles them
+mvn install -Dmaven.test.skip=true										# do not even compile the tests - honored by Surefire, Failsafe and the Compiler Plugin
 
-
-
-
+mvn test -Dtest=MyUnitTest												# run a specific unit test
+mvn test -Dtest=MyUnitTest#testMethod									# run a specific unit test method
 
