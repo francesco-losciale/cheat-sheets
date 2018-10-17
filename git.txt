@@ -1,0 +1,15 @@
+This will stash everything that you haven't previously added. Just git add the things you want to keep, then run it.
+
+git stash --keep-index
+For example, if you want to split an old commit into more than one changeset, you can use this procedure:
+
+git rebase -i <last good commit>
+Mark some changes as edit.
+git reset HEAD^
+git add <files you want to keep in this change>
+git stash --keep-index
+Fix things up as necessary. Don't forget to git add any changes.
+git commit
+git stash pop
+Repeat, from #5, as necessary.
+git rebase --continue
