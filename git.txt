@@ -13,3 +13,12 @@ git commit
 git stash pop
 Repeat, from #5, as necessary.
 git rebase --continue
+
+
+
+
+
+git reset -- <filePath> # removed staged files
+git log --pretty=oneline
+
+git reset --hard HEAD~1 # move back to the previous commit
