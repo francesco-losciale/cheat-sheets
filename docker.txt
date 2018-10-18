@@ -6,6 +6,8 @@ docker image ls 					# list all the images downloaded in the machine
 docker container ls 				# list all the running container
 docker container ls --all 			# list all the containers
 
+docker inspect --format='{{.LogPath}}' $(docker ps -aqf 'name=workflow_m')
+
 
 create the Dockerfile which defines what goes inside the container.
 
