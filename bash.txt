@@ -1,0 +1,3 @@
+jar tvf /ericsson/3pp/jboss/standalone/deployments/ap-service-core-ear-1.82.9.ear 									# view content of an archive
+jar xvf /ericsson/3pp/jboss/standalone/deployments/ap-service-core-ear-1.82.9.ear META-INF/jboss-ejb-client.xml		# extract a single file from the archive
+find . -name "*weld*.jar"
