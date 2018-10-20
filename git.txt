@@ -1,24 +1,28 @@
-This will stash everything that you haven't previously added. Just git add the things you want to keep, then run it.
+# please look at the pdf in this same folder
 
+# the next time it won't ask for user/password
+git config credential.helper store 
+
+# configure remote repository
+git remote add <remote name> git://... 
+git remote rm <remote name>
+
+# after pull, when you get conflicts, run this command then do the "merge commit"
+git add <merged file>
+
+
+
+# stash only some files instead of all of them
+git add <file>
 git stash --keep-index
-For example, if you want to split an old commit into more than one changeset, you can use this procedure:
-
-git rebase -i <last good commit>
-Mark some changes as edit.
-git reset HEAD^
-git add <files you want to keep in this change>
-git stash --keep-index
-Fix things up as necessary. Don't forget to git add any changes.
-git commit
-git stash pop
-Repeat, from #5, as necessary.
-git rebase --continue
 
 
+# remove staged files
+git reset <commit>
+git reset -- <filePath>
 
+# back to the previous commit by 1
+git reset --hard HEAD~1 
 
-
-git reset -- <filePath> # removed staged files
 git log --pretty=oneline
 
-git reset --hard HEAD~1 # move back to the previous commit
