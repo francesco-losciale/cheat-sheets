@@ -1,0 +1,33 @@
+
+#################### SOLID principles #######################
+
+
+1. Single Responsability Principle (SRP)
+
+A module should have one, and only one, reason to change.
+A module should be responsible to one, and only one, user or stakeholder.
+A module should be responsible to one, and only one, actor.
+
+2. Open-close principle (OCP)
+
+A software artifact should be open for extension but closed for modification.
+
+3. Liskov Substitution Principle (LSP)
+
+If for each object o1 of type S there is an object o2 of type T such that for all programs 
+P defined in terms of T, the behaviour of P is unchanged when o1 is substituted for o2 
+then S is a subtype of T.
+
+4. Interface segregation principle (ISP)
+
+No client should be forced to depend on methods it does not use. ISP splits interfaces that are very large 
+into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. 
+Such shrunken interfaces are also called role interfaces.
+
+5. Dependency inversion principle (DSP)
+
+The most flexible systems are those in which source code depndencies refer only to abstractions, not to concretitions.
+
+
+
+
