@@ -1,0 +1,156 @@
+What's wrong with software development?
+
+Developers often feel out of control over their work. 
+They can't estimate and measure easily the quality of their code and cannot definitely assert that the system is working fine.
+"Testing shows the presence, not the absence, of bugs." - Dijkstra
+
+The ideal situation would be that for each key press on the keyboard the machine could tell the developer 
+that something went wrong. Kind of an instant feedback. (Kent Beck)
+
+Intead, developers are constraint to follow this loop: 
+1. write the code
+2. integrate
+3. deploy
+4. run test
+5. deliver
+6. wait stakeholder feedback and changes
+7. goto 1
+An unstable context and a long unpredictable process.
+
+TDD helps to mitigate this situation at least for steps 1-5 that are deveopers' liability: 
+assumed that you test first well, throught the RED-GREEN-REFACTORING you can at least know instantly that 
+your code works or you introduced bugged code or simply get more confident about it.
+
+
+#############################################################################################################################
+
+
+Ian Cooper - "TDD, where did it all go wrong" principles - watch on youtube 
+
+
+
+
+
+
+We often write more test code than implementation code.
+
+
+
+Tests sometime become an obstacle to refactoring/change because likely there are some other tests will get broken.
+
+
+
+Generally this happens because the unit tests are highly coupled to the implementation code (through mocks or bad design).
+
+
+
+Once the test is broken after a refactoring, you don't get any idea of what the purpose of the test was.
+
+
+
+Test fixing after an implementation code change are a waste of time.
+
+
+
+
+
+
+
+
+
+Avoid testing implementation details, test "behaviours" (ie. use cases or requirements or stories).
+
+
+
+The test runs above an API or a contract or the external part of a module (interface, public methods, facade, etc).
+
+
+
+The API is more stable than the implementation.
+
+
+
+Try to preserve the implementation hiding by keeping a thin API.
+
+
+
+
+
+
+
+
+
+The system under test is not a class, but a more generic module. (In the "Java Testing with Spock" book they wrongly talk about a specific class under test).
+
+
+
+A module can include even more than one class.
+
+
+
+A specific class has dependencies, this implies that you should mock heavly; eventually the test is coupled to the implementation code.
+
+
+
+We should use mocks for file system, database, rest, ejb, etc. or for modules from different use cases we want to include under the API. 
+
+
+
+If you need many mocks then it is better to move your test to higher level.
+
+
+
+Don't use DI when it's enough new'ing up the object, this leads to over-complexity. If the class we are creating is a dependency for the class under test only then there is no need to inject it.
+
+
+
+
+
+
+
+
+
+
+
+While refactoring:
+
+
+
+Don't write new tests.
+
+
+
+Don't introduce public classes, you might need collaborators that fulfill a role. Use a mock in this case.
+
+
+
+Don't make everything public in order to test it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Further info:
+
+
+
+Programmer Anarchy (Fred George)
+
+Spike and Stabilize
+
+Lean Sofware Development
+
+Refactoring to Patterns, Kerievsky
+
+Duct tape programmer
+
+
+
