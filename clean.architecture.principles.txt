@@ -1,5 +1,5 @@
 
-#################### SOLID principles #######################
+###################################################### SOLID principles ######################################################
 
 
 1. Single Responsability Principle (SRP)
@@ -29,5 +29,21 @@ Such shrunken interfaces are also called role interfaces.
 The most flexible systems are those in which source code depndencies refer only to abstractions, not to concretitions.
 
 
+
+###################################################### Component Cohesion ######################################################
+
+
+1. Resuse/Release Equivalence Principle
+
+The granule of reuse is the granule of release.
+
+2. Common Closure Principle
+
+Gather into components those classes that change for the same reasons and at the same times.
+Separate into different components those classes that change at different times and for different reasons.
+
+3. Common Reuse Principle
+
+Don't force users of a component to depend on things they don't need.
 
 
