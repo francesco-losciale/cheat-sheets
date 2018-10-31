@@ -41,7 +41,7 @@ For this new commit, the parent is the same of the one you wanted to edit.
 Now, if you try to push normally, git will find a difference. origin/master has the old commit-id, your local master
 instead has the new one. This will end up in a merge commit.
 
-But if you want to skip the merge you can force the push:
+But if you want to skip the merge you can force the push. This will overwrite your remote commit with the new one.
 
 git push origin master -f
 
