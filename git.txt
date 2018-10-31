@@ -21,7 +21,7 @@ git stash --keep-index
 git reset <commit>
 git reset -- <filePath>
 
-# back to the previous commit by 1
+# back to the previous commit by 1 (attention! a merge commit is part of the previous attempted commit)
 git reset --hard HEAD~1 
 
 git log --pretty=oneline
