@@ -10,6 +10,17 @@ git remote rm <remote name>
 # set up vimdiff as mergetool
 git config merge.tool vimdiff    
 
+# for resolving conflicts in the base(anchestor)-local-remote view
+:diffg RE  " get from REMOTE
+:diffg BA  " get from BASE
+:diffg LO  " get from LOCAL
+
+# if you want to resolve conflicts only to the remote changes in a merge you would do the following:
+git merge -Xtheirs <branch>
+
+# if you want to resolve conflicts only to the local changes in a merge you would do the following:
+git merge -Xours <branch>
+
 # after pull, when you get conflicts, run this command then do the "merge commit"
 git add <merged file>
 
