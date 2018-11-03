@@ -7,6 +7,9 @@ git config credential.helper store
 git remote add <remote name> git://... 
 git remote rm <remote name>
 
+# set up vimdiff as mergetool
+git config merge.tool vimdiff    
+
 # after pull, when you get conflicts, run this command then do the "merge commit"
 git add <merged file>
 
