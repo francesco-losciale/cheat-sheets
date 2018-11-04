@@ -7,6 +7,15 @@ git config credential.helper store
 git remote add <remote name> git://... 
 git remote rm <remote name>
 
+# rebase your branch - apply your change on top of the downloaded remote commits (or git pull --rebase)
+git fetch
+git log git log ..origin/master 
+git log git log origin/master.. 
+git rebase origin/master
+
+# automatically download commits: fast-forward (with --rebase) or merge (default is merge)
+git pull
+
 # set up vimdiff as mergetool
 git config merge.tool vimdiff    
 
