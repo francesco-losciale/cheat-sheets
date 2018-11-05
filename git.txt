@@ -44,12 +44,15 @@ git stash --keep-index
 git reset <commit>
 git reset -- <filePath>
 
+# remove already pushed file from repo
+git rm <filePath>
+
 # back to the previous commit by 1 (attention! a merge commit is part of the previous attempted commit)
 git reset --hard HEAD~1 
 git push origin master -f           # if you want to push the reset you need to force it
 
 git log --pretty=oneline
-
+git log -- /path/to/file
 
 ###################### amend a commit ######################
 
