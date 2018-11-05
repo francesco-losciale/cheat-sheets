@@ -13,6 +13,10 @@ git log git log ..origin/master
 git log git log origin/master.. 
 git rebase origin/master
 
+# create and use a new branch
+git branch porting-kt
+git checkout porting-kt
+
 # automatically download commits: fast-forward (with --rebase) or merge (default is merge)
 git pull
 
