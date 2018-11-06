@@ -17,7 +17,7 @@ git rebase origin/master
 git branch porting-kt
 git checkout porting-kt
 
-# automatically download commits: fast-forward (with --rebase) or merge (default is merge)
+# automatically download and merge commits. Options: fast-forward (with --rebase) or merge (default is merge)
 git pull
 
 # set up vimdiff as mergetool
