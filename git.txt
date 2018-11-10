@@ -17,6 +17,19 @@ git rebase origin/master
 git branch porting-kt
 git checkout porting-kt
 
+# create a branch and push it on remote
+git checkout -b <branch>
+git push -u origin <branch> # Edit files, add and commit. Then push with the -u (short for --set-upstream) option
+
+# get notification about a new branch created on remote
+git fetch 
+From https://github.com/francesco-losciale/library-management-business
+ * [new branch]      porting-kt -> origin/porting-kt
+
+# download the specific branch and use it
+git fetch origin porting-kt
+git checkout porting-kt
+
 # automatically download and merge commits. Options: fast-forward (with --rebase) or merge (default is merge)
 git pull
 
@@ -36,14 +49,6 @@ git merge -Xours <branch>
 
 # after pull, when you get conflicts, run this command then do the "merge commit"
 git add <merged file>
-
-
-
-
-
-# create a branch and push it on remote
-git checkout -b <branch>
-git push -u origin <branch> # Edit files, add and commit. Then push with the -u (short for --set-upstream) option
 
 
 
