@@ -39,6 +39,14 @@ git add <merged file>
 
 
 
+
+
+# create a branch and push it on remote
+git checkout -b <branch>
+git push -u origin <branch> # Edit files, add and commit. Then push with the -u (short for --set-upstream) option
+
+
+
 # stash only some files instead of all of them
 git add <file>
 git stash --keep-index
