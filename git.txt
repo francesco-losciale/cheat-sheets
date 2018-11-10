@@ -51,6 +51,11 @@ git merge -Xours <branch>
 git add <merged file>
 
 
+# merge some changes from branch src to branch dest
+git checkout dest
+git merge src
+
+
 
 # stash only some files instead of all of them
 git add <file>
