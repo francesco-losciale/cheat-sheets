@@ -48,7 +48,7 @@ docker run -p 4000:80 freng0/get-started:part2 			# run the image in a different
 
 docker stop $(docker ps -a -q) 				# stop all the docker container 
 docker rm $(docker ps -a -q)				  # remove all the docker container
-docker rmi $(docker images -q)        # remove all images
+docker system prune -a                # remove all! containers, images, volumes, etc
 
 =========================================================================================================================================
 
