@@ -1,0 +1,17 @@
+(FN)+ALT+INSERT   Generate Code (even in pom.xml or even for generating equals and hashcode)
+(FN)+SHIFT+F6     Rename
+
+CTRL+SHIFT+T      Create a new test
+
+Use live templates for pre-defined code snippets
+http://antonperez.com/2015/09/02/intellij-idea-create-junit-test-method-code-snippet-shortcut/
+
+ALT+SHIFT+CLICK   Multiple line editing
+
+Window -> Editor tabs -> Split vertically
+
+Create a field for this constructor parameter
+ALT+ENTER         the cursor on the constructor parameter name
+
+CTRL+ALT+M        extract method
+CTRL+ALT+C        extract constant
