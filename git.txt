@@ -23,6 +23,9 @@ vim file1 file2 ...
 git add *; git commit -m "..." ### this is a detached commit, it doesn't belong to any branch
 git checkout -b new_branch_name ### saves the detached commit to a new branch
 
+# create a branch starting from a previous commit
+git checkout -b test-branch 56a4e5c08
+
 # create a branch and push it on remote
 git checkout -b <branch>
 git push -u origin <branch> # Edit files, add and commit. Then push with the -u (short for --set-upstream) option
