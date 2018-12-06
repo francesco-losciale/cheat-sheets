@@ -17,6 +17,12 @@ git rebase origin/master
 git branch porting-kt
 git checkout porting-kt
 
+# create detached commits and saving them into a new branch
+git checkout <commit_hash> 
+vim file1 file2 ...
+git add *; git commit -m "..." ### this is a detached commit, it doesn't belong to any branch
+git checkout -b new_branch_name ### saves the detached commit to a new branch
+
 # create a branch and push it on remote
 git checkout -b <branch>
 git push -u origin <branch> # Edit files, add and commit. Then push with the -u (short for --set-upstream) option
