@@ -1,3 +1,6 @@
 # Macros
 https://aphyr.com/posts/305-clojure-from-the-ground-up-macros
 https://www.braveclojure.com/writing-macros/
+
+# Exercises
+http://www.4clojure.com/problems
