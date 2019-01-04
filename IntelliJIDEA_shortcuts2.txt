@@ -16,6 +16,7 @@ ALT+ENTER         the cursor on the constructor parameter name
 CTRL+ALT+M        extract method
 CTRL+ALT+C        extract constant
 CTRL+ALT+F        extract variable to a field
+CTRL+ALT+N        inline
 
 CTRL+W            extend selection to outer code - press repeatedly
 
