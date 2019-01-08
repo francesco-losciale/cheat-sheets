@@ -1,0 +1,9 @@
+Run your programs with -XX:+PrintFlagsFinal, to get information, which optimizations 
+are enabled, or disabled based on hardware and OS discovery.
+
+Intrinsics are the certain features or group of functions, that Java compiler replaces with native / assembly 
+invocations. e.g.. cryptographic functions, optimized routines for strings comparisons, checksum calculations.
+
+In most cases reducing the number of CPU instructions from 1000 to 2 or 1, which means we are getting work done faster.
+
+https://chriswhocodes.com/hotspot_option_differences.html
