@@ -50,6 +50,17 @@ docker stop $(docker ps -a -q) 				# stop all the docker container
 docker rm $(docker ps -a -q)				  # remove all the docker container
 docker system prune -a                # remove all! containers, images, volumes, etc
 
+=================================================================================================================
+
+Stop/delete all containers: 
+   docker stop $(docker ps -a -q) 
+   docker rm $(docker ps -a -q) 
+   docker rm <containerId>
+   
+Delete all images: 
+   docker rmi $(docker images -q)
+   docker rmi <imageId> 
+
 =========================================================================================================================================
 
 Services are really just “containers in production.” A service only runs one image, but it codifies the way that image runs—what ports it should use, how many replicas of the container should run so the service has the capacity it needs, and so on. Scaling a service changes the number of container instances running that piece of software, assigning more computing resources to the service in the process.
