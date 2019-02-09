@@ -139,3 +139,4 @@ git submodule add <git_https_endpoint>
 git status
 git add <...>
 git commit <....>
+git clone --recursive <parent_git_endpoint>
