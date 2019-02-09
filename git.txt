@@ -133,3 +133,9 @@ git push --force-with-lease
 Instead of 4-6 you can just rebase onto new commit:
 
 git rebase -i 42627abe
+
+# add submodule repository to parent repository
+git submodule add <git_https_endpoint>
+git status
+git add <...>
+git commit <....>
