@@ -7,6 +7,14 @@ git config credential.helper store
 git remote add <remote name> git://... 
 git remote rm <remote name>
 
+# set author and email for a particular repository
+git config user.name "Your Name"
+git config user.email "Your email"
+
+# set author and email as global for all repositories
+git config --global user.name "Your Name"
+git config --global user.email "Your email"
+
 # rebase your branch - apply your change on top of the downloaded remote commits (or git pull --rebase)
 git fetch
 git log git log ..origin/master 
