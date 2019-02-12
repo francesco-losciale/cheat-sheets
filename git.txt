@@ -31,6 +31,12 @@ vim file1 file2 ...
 git add *; git commit -m "..." ### this is a detached commit, it doesn't belong to any branch
 git checkout -b new_branch_name ### saves the detached commit to a new branch
 
+# suppose you are on a detached commit, you now want to add it to master
+git checkout -b temp           ### create temp branch
+git branch -f master temp      ### update master to point to it
+git checkout master            ### will be one commit ahead
+git push origin master
+
 # create a branch starting from a previous commit
 git checkout -b test-branch 56a4e5c08
 
