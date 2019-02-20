@@ -91,3 +91,8 @@ mvn test -Dtest=MyUnitTest#testMethod									# run a specific unit test method
 #####################################################################################################################################
 # Maven compiles but IntelliJ doesn't, fix using ...
 mvn idea:idea
+
+
+####################################################################################################################################
+mvn versions:set -DnewVersion=1.66.4-SNAPSHOT
+
