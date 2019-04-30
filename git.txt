@@ -154,3 +154,9 @@ git status
 git add <...>
 git commit <....>
 git clone --recursive <parent_git_endpoint>
+
+
+# verify, check and apply a patch 
+git apply --stat 0001-TORF-336524-AP-Documentation-and-sample-updates-for-.patch
+git apply --check 0001-TORF-336524-AP-Documentation-and-sample-updates-for-.patch
+git apply 0001-TORF-336524-AP-Documentation-and-sample-updates-for-.patch
