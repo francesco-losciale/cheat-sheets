@@ -1,3 +1,17 @@
 jar tvf /ericsson/3pp/jboss/standalone/deployments/ap-service-core-ear-1.82.9.ear 									# view content of an archive
 jar xvf /ericsson/3pp/jboss/standalone/deployments/ap-service-core-ear-1.82.9.ear META-INF/jboss-ejb-client.xml		# extract a single file from the archive
 find . -name "*weld*.jar"
+
+Ctrl + r # search in bash history for commands 
+
+
+
+If you want to run the last command you ran, do:
+!!
+
+If you want to run the last ls command you ran, do:
+!ls
+
+If you just ran ls /some/long/path, and you want to cd to it, do:
+cd !$
+
