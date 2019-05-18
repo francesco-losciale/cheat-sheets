@@ -15,3 +15,12 @@ If you want to run the last ls command you ran, do:
 If you just ran ls /some/long/path, and you want to cd to it, do:
 cd !$
 
+
+# list all the groups available
+cut -d: -f1 /etc/group | sort
+
+# add user to docker group
+sudo usermod -aG docker osboxes
+
+# list the group the user is in
+group
