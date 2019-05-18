@@ -102,6 +102,25 @@ docker stack deploy -c docker-compose.yml getstartedlab         # update the doc
 docker stack rm getstartedlab					# take the app down
 docker swarm leave --force					# take down the swarm
  
+ 
+ 
+ 
+========================================================================
+
+Testcontainers is a docker wrapper for constructing integration tests. 
+It needs correct priviledges to connect to the docker machine.
+
+
+# list all the groups available
+cut -d: -f1 /etc/group | sort
+
+# add user to docker group
+sudo usermod -aG docker osboxes
+
+# list the group the user is in
+group
+ 
+ 
 ==================================================================================================================================
 
 Change dockerd configuration (docker daemon)
