@@ -1,0 +1,15 @@
+# install sdkman.io
+curl -s "https://get.sdkman.io" | bash
+source "/Users/____YOURNAME____/.sdkman/bin/sdkman-init.sh"
+
+# list jdk for java
+sdk list java
+
+# install AdoptOpenJDK 11.0.4.hs (hot spot)
+sdk install java 11.0.4.hs-adpt
+sdk update
+
+# use the new jdk
+sdk use java 11.0.4.hs-adpt
+
+# set up your IDE & gradle/maven configuration accordingly 
