@@ -7,7 +7,7 @@ brew update
 brew install --HEAD xhyve
 brew cask install minishift
 
-minishift start
+(sudo) minishift start
 
 	#### in case of problem with certificates:
 	minishift ip --set-static
@@ -61,9 +61,6 @@ Change the Content type to application/json - Thats it!
 After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.
 
 
-
-
-
 ############### OKD ##################################
 
 OKD is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment. OKD also serves as the upstream code base upon which Red Hat OpenShift Online and Red Hat OpenShift Container Platform are built.
@@ -85,60 +82,17 @@ This sample walks through the process of login to an OpenShift cluster and deplo
 The Jenkins job will trigger OpenShift to build+deploy a test version of the application, validate that the deployment works, and then tag the test version into production.
 
 
-oc login
-oc new-project test
-# choose one (
-	oc new-app jenkins-persistent 
-	oc new-app jenkins-ephemeral
-# )
-oc expose svc/<application_name> --hostname=<external_name>
-oc get route
+##### Simple pipeline ######
+oc new-project test-project
+oc new-app jenkins-persistent 
 
+oc expose svc/jenkins
 
-################ Simple Pipeline ####################################
+# create a Build Config 
+# (https://docs.openshift.com/container-platform/3.9/dev_guide/dev_tutorials/openshift_pipeline.html)
+oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/pipeline/nodejs-sample-pipeline.yaml
 
-Login as a normal user (any user name is fine)
+# start the job in jenkins and deploy in oc 
+oc start-build nodejs-sample-pipeline
 
- $ oc login
-Confirm that the example imagestreams and templates are present in the openshift namespace:
-
- $ oc get is -n openshift
- $ oc get templates -n openshift
-If they are not present, you can create them by running these commands as a cluster admin:
-
- $ oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/image-streams/image-streams-centos7.json -n openshift
- $ oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/jenkins-ephemeral-template.json -n openshift
-Note: If you have persistent volumes available in your cluster and prefer to use persistent storage (recommended) for your Jenkins server, register the jenkins-persistent-template.json file as well:
-
- $ oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/jenkins-persistent-template.json -n openshift
-Create a project for your user named "pipelineproject"
-
- $ oc new-project pipelineproject
-Run this command to instantiate the template which will create a pipeline buildconfig and some other resources in your project:
-
- $ oc new-app -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/pipeline/samplepipeline.yaml
-At this point if you run oc get pods you should see a jenkins pod, or at least a jenkins-deploy pod. (along with other items in your project) This pod was created as a result of the new pipeline buildconfig being defined by the sample-pipeline template.
-
-View/Manage Jenkins (optional)
-
-You should not need to access the jenkins console for anything, but if you want to configure settings or watch the execution, here are the steps to do so:
-
-If you have a router running, run:
-
- $ oc get route
-and access the host for the Jenkins route.
-
-If you do not have a router, or your host system does not support nip.io name resolution you can access jenkins directly via the service ip. Determine the jenkins service ip ("oc get svc") and go to it in your browser on port 80. Do not confuse it with the jenkins-jnlp service. If you take this approach, run the following command before attempting to log into Jenkins:
-
- $ oc annotate sa/jenkins serviceaccounts.openshift.io/oauth-redirecturi.1=http://<jenkins_service_ip:jenkins_service_port>/securityRealm/finishLogin --overwrite
-Only include the port in the uri if it is not port 80.
-
-Login with the user name used to create the "pipelineproject" and any non-empty password.
-
-Launch a new build
-
- $ oc start-build sample-pipeline
-Jenkins will: create an instance of the sample-pipeline job, launch a slave, trigger a build in openshift, trigger a deployment in openshift, and tear the slave down.
-
-If you monitor the pods in your default project, you will also see the slave pod get created and deleted.
 
