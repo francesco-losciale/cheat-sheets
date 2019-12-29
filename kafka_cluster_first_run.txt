@@ -1,0 +1,72 @@
+
+wget http://apache.mirror.anlx.net/kafka/2.4.0/kafka_2.12-2.4.0.tgz
+
+tar -xzf kafka_2.12-2.4.0.tgz \
+&& cd kafka_2.12-2.4.0
+
+# start zookeeper (used by kafka)
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# start the kafka server (single broker for now - ie. cluster of size one)
+bin/kafka-server-start.sh config/server.properties
+
+# create a topic 
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+
+# list all topics
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# produce some messages to the topic from stdin
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+
+# consume from the topic printing the output to stdout
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+
+
+
+
+# let's create a three nodes cluster now
+# now edit these new files and set the following properties:
+config/server-1.properties:
+    broker.id=1
+    listeners=PLAINTEXT://:9093
+    log.dirs=/tmp/kafka-logs-1
+ 
+config/server-2.properties:
+    broker.id=2
+    listeners=PLAINTEXT://:9094
+    log.dirs=/tmp/kafka-logs-2
+
+bin/kafka-server-start.sh config/server-1.properties &
+bin/kafka-server-start.sh config/server-2.properties &
+
+# create a topic with a replication node factor of three
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 3 --partitions 1 --topic my-replicated-topic
+
+# describe topic to know the state of the topic
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic my-replicated-topic
+
+# Here is an explanation of output. The first line gives a summary of all the partitions, each additional line gives information about one partition. 
+# Since we have only one partition for this topic there is only one line.
+
+# "leader" is the node responsible for all reads and writes for the given partition. Each node will be the leader for a randomly selected portion of the partitions.
+# "replicas" is the list of nodes that replicate the log for this partition regardless of whether they are the leader or even if they are currently alive.
+# "isr" is the set of "in-sync" replicas. This is the subset of the replicas list that is currently alive and caught-up to the leader.
+
+# let's publish some messages to the new topic
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-replicated-topic
+
+# let's consume those messages
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic my-replicated-topic
+
+# Now let's test out fault-tolerance. Broker 1 was acting as the leader so let's kill it
+ps aux | grep server-1.properties
+kill -9 <pid>
+
+# Leadership has switched to one of the followers and node 1 is no longer in the in-sync replica set
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic my-replicated-topic
+
+# But the messages are still available for consumption even though the leader that took the writes originally is down
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic my-replicated-topic
+
+
