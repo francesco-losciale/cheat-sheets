@@ -24,10 +24,13 @@ git notes add -m "ToDo: Fix stuff"
 git log
 git notes add --force -m "ToDone: Fixed stuff"
 
+# notes are local to a branch an are not copyed using merge
+# you need to copy them manually
+git notes copy <from> <to>
+
 # cherry-pick a commit from another branch to the current one
 git checkout master
 git cherry-pick <commit-hash>
-git notes copy <from> <to>
 
 # rebase your branch - apply your change on top of the downloaded remote commits (or git pull --rebase)
 git fetch
