@@ -15,6 +15,20 @@ git config user.email "Your email"
 git config --global user.name "Your Name"
 git config --global user.email "Your email"
 
+# list of commits in one line
+git log --oneline
+
+# add some notes to a commit
+git notes show
+git notes add -m "ToDo: Fix stuff"
+git log
+git notes add --force -m "ToDone: Fixed stuff"
+
+# cherry-pick a commit from another branch to the current one
+git checkout master
+git cherry-pick <commit-hash>
+git notes copy <from> <to>
+
 # rebase your branch - apply your change on top of the downloaded remote commits (or git pull --rebase)
 git fetch
 git log git log ..origin/master 
