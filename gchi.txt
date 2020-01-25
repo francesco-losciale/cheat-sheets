@@ -1,0 +1,4 @@
+stack ghci
+Prelude> :load test/Spec.hs
+Prelude> main
+Prelude> :quit
