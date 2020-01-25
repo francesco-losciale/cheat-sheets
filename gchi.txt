@@ -1,4 +1,7 @@
 stack ghci
 Prelude> :load test/Spec.hs
-Prelude> main
+[1 of 1] Compiling Main             ( test/Spec.hs, interpreted )
+Ok, one module loaded.
+*Main> main
+*Main> :m
 Prelude> :quit
