@@ -24,3 +24,6 @@ sudo usermod -aG docker osboxes
 
 # list the group the user is in
 group
+
+# find process id that is listening to a specific port
+sudo lsof -i -P -n | grep LISTEN
