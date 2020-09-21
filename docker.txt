@@ -12,6 +12,8 @@ docker inspect --format='{{.LogPath}}' $(docker ps -aqf 'name=workflow_m')
 # get ip address given a docker container name
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
 
+# when your app runs in a container, but needs to connect to an app running in your host system
+docker run <image id> --network=host
 
 
 create the Dockerfile which defines what goes inside the container.
