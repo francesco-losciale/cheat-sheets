@@ -64,6 +64,8 @@ Stop/delete all containers:
    docker rm $(docker ps -a -q) 
    docker rm <containerId>
    
+    docker container stop $(docker container ls -aq) && docker container rm $(docker container ls -aq)
+   
 Delete all images: 
    docker rmi $(docker images -q)
    docker rmi <imageId> 
