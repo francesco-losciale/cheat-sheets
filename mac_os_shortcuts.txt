@@ -1,0 +1,35 @@
+MacBook shortcuts
+
+cmd+shift+v  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,paste without text formatting
+cmd+opt+esc …………………………………….show force quit applications menu
+cmd+shift+4  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,screen snipping tool
+cmd+ctrl+shift+4 ……………………………. Screen snipping tool for copying to clipboard
+cmd+shift+3  ………………………………………entire screen shot
+cmd+ctrl+n   ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,after selecting some files from your desktop/folder, creates a new folder and moves everything in there
+cmd+opt+cancel  ……………………………….delete selected files
+cmd+click ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,opens the link in a new tab
+cmd+c …………………………………………………on a selected file on the desktop then… 
+	cmd+v ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,if you just want to copy that file
+	cmd+opt+v …………………………………………to move it into another directory
+cmd+tab ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,to show the running app selector
+	cmd+tab………………………………………to switch to the next one
+	cmd+q ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,to quit the currently selected app
+	cmd+h …………………………………………to hide the currently selected app
+	cmd+ + ………………………………………..zoom in
+        cmd+ -  ………………………………………..zoom out
+cmd+shift+period …………………………….. show hidden files
+cmd+shift+ - …………………………………… collapse all
+cmd+shift+g ……………………………….. in finder, go directly into a directory
+
+
+# shutdown processes in MacBook
+sudo launchctl stop minishift
+
+
+Intellij 
+
+TODO …………………………………………… move tab in opposite group in split vertical view
+opt+§ …………………………………… ……… split file vertically
+Opt +>. ………………………………………….. move to next splitter
+Cmd + r………………………………………….. rerun the test
+ctrl+canc …………………………………… close others
