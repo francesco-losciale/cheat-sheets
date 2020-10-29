@@ -133,6 +133,8 @@ But if you want to skip the merge you can force the push. This will overwrite yo
 
 git push origin master -f
 
+## list of tags ## 
+git describe --tags
 
 
 ##### how to change author of one specific commit #######
