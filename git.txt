@@ -105,14 +105,18 @@ git add <file>
 git stash --keep-index
 
 
-# remove staged files
+# remove staged files from commit
+git reset --soft HEAD~1
 git reset <commit>
 git reset -- <filePath>
+
+# remove staged files from first commit
+git update-ref -d HEAD
 
 # remove already pushed file from repo
 git rm <filePath>
 
-# back to the previous commit by 1 (attention! a merge commit is part of the previous attempted commit)
+# back to the previous commit by 1 (careful! a merge commit is part of the previous attempted commit)
 git reset --hard HEAD~1 
 git push origin master -f           # if you want to push the reset you need to force it
 
