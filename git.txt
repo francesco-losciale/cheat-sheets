@@ -18,6 +18,9 @@ git config --global user.email "Your email"
 # list of commits in one line
 git log --oneline
 
+# show list of files in commit HEAD
+git show --pretty="" --name-only bd61ad98   
+
 # add some notes to a commit
 git notes show
 git notes add -m "ToDo: Fix stuff"
