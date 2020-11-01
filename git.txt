@@ -110,6 +110,9 @@ git reset --soft HEAD~1
 git reset <commit>
 git reset -- <filePath>
 
+# unstage selected files
+git rm --cached <filePath>
+
 # remove staged files from first commit
 git update-ref -d HEAD
 
