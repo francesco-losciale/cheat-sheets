@@ -4,3 +4,7 @@ keytool -genkey -alias test-jks -keyalg RSA -keystore keystore-test/test-file.jk
 
 # create a certificate starting from the jks file
 keytool -export -alias test -file keystore-test/public_cert.cer -keystore keystore-test/test-file.jks
+
+# see the content of the jks (password required)
+keytool -v -list -keystore keystore-test/test-file.jks
+
