@@ -1,0 +1,6 @@
+# generate jks file in keystore-test new directory
+keytool -genkey -alias test-jks -keyalg RSA -keystore keystore-test/test-file.jks
+<fill in all the details>
+
+# create a certificate starting from the jks file
+keytool -export -alias test -file keystore-test/public_cert.cer -keystore keystore-test/test-file.jks
