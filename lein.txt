@@ -1,0 +1,5 @@
+lein new serpent-talk
+lein test
+lein deps :tree
+lein run -m serpent-talk.talk "hello world" # main
+lein run "hello world" # if :main is specified in project.cls
