@@ -3,4 +3,4 @@ lein test
 lein deps :tree
 lein run -m serpent-talk.talk "hello world" # main
 lein run "hello world" # if :main is specified in project.cls
-lein uberjar # add :aot first
+lein uberjar # add :aot first, generated standalone file contains entire clj runtime
