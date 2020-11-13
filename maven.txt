@@ -12,6 +12,12 @@ Usually, snapshot dependencies should only exist during development and no relea
 
 In settings.xml you can specify which repository is for snapshots and which is for release (it can be the same). You can also disable snapshots.
 
+### useful commands ###
+
+# overwrite the version instead of using the one in the pom.xml (that by convention should have -SNAPSHOT suffix)
+./mvnw -s configuration/maven/settings.xml --show-version --batch-mode versions:set -DnewVersion=12.9f41a5c
+./mvnw deploy -s settings.xml
+
 ####################################################################################################################################################################################################
 
 # initialization commands
