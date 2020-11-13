@@ -12,6 +12,7 @@ Usually, snapshot dependencies should only exist during development and no relea
 
 In settings.xml you can specify which repository is for snapshots and which is for release (it can be the same). You can also disable snapshots.
 
+####################################################################################################################################################################################################
 
 # initialization commands
 
