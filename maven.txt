@@ -1,3 +1,17 @@
+### Difference between Snapshots and Release ###
+
+You should use 1.0-SNAPSHOT for example for the development jars to be uploaded in nexus. Maven will interpret the SNAPSHOT in the version and will create a new version of the jar uploaded in the snapshot repository. Once you have completed development, then you can use a "real" version (without -SNAPSHOT suffix).
+
+A snapshot version in Maven is one that has not been released.
+
+The idea is that before a 1.0 release (or any other release) is done, there exists a 1.0-SNAPSHOT. That version is what might become 1.0. It's basically "1.0 under development". This might be close to a real 1.0 release, or pretty far (right after the 0.9 release, for example).
+
+The difference between a "real" version and a snapshot version is that snapshots might get updates. That means that downloading 1.0-SNAPSHOT today might give a different file than downloading it yesterday or tomorrow.
+
+Usually, snapshot dependencies should only exist during development and no released version (i.e. no non-snapshot) should have a dependency on a snapshot version.
+
+In settings.xml you can specify which repository is for snapshots and which is for release (it can be the same). You can also disable snapshots.
+
 
 # initialization commands
 
