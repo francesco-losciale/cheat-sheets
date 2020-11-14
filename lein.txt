@@ -11,4 +11,9 @@ lein ring server
 lein ring server-headless
 curl -i http://localhost:3000/cheshire-cat
 
+# run cljs repl
+sdk use java 8.0.222.hs-adpt
 lein trampoline cljsbuild repl-rhino # use Rhino JavaScript to evaluate cjs
+
+lein ring server-headless
+lein cljsbuild auto
