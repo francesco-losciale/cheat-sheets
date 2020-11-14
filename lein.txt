@@ -16,4 +16,5 @@ sdk use java 8.0.222.hs-adpt
 lein trampoline cljsbuild repl-rhino # use Rhino JavaScript to evaluate cjs
 
 lein ring server-headless
+lein cljsbuild once
 lein cljsbuild auto
