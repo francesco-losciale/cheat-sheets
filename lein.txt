@@ -18,3 +18,11 @@ lein trampoline cljsbuild repl-rhino # use Rhino JavaScript to evaluate cjs
 lein ring server-headless
 lein cljsbuild once
 lein cljsbuild auto
+
+# execute cljs in browser writing in repl
+# start repl in listening mode
+lein trampoline cljsbuild repl-listen
+# add `(repl/connect "http://localhost:9000/repl")` in your exported init function
+# connect to the page (cache can cause troubles - use incognito)
+# type `(js/alert "This is a browser connected to REPL")` in the repl
+# and see the result in the browser
