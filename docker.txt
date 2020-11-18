@@ -46,6 +46,10 @@ docker run -p 4000:80 friendly_tag_name     # runs the image mapping the machine
 docker run -d -p 4000:80 friendly_tag_name  # runs the container in background in detached mode
 docker container stop <container id>        # stops the container
 
+# push image in docker registry
+docker login --username <username> <nexus_registry_url>
+docker tag <source_tag_image_url> <target_tag_image_url> 
+docker push <target_tag_image_url>
 
 docker login 							# freng0 <solita password>
 docker tag friendly_tag_name freng0/get-started:part2		# put the image in the get-started repository using part2 as tag
