@@ -21,6 +21,8 @@ docker exec -it <container name> /bin/bash
 # run image
 docker container run <image>
 
+# print log and wait
+docker logs <container_name> --follow
 
 create the Dockerfile which defines what goes inside the container.
 
