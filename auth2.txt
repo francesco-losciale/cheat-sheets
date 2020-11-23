@@ -1,0 +1,1 @@
+curl -X POST -u "client-id:client-secret" -d "grant_type=client_credentials" <http: url>/token | jq '.access_token'
