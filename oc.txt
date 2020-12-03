@@ -1,0 +1,6 @@
+oc login <openshift url> --token=<token>
+
+oc rsh <pod name>
+jstack  > thread_dump.txt
+oc rsync <pod name>:. pod_files
+oc rollout latest <service name>
