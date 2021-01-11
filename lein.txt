@@ -26,3 +26,11 @@ lein trampoline cljsbuild repl-listen
 # connect to the page (cache can cause troubles - use incognito)
 # type `(js/alert "This is a browser connected to REPL")` in the repl
 # and see the result in the browser
+
+
+
+lein new luminus guestbook --template-version 3.57 -- +h2 +http-kit
+ lein clean 
+ lein install
+ lein test
+ lein test-refresh
