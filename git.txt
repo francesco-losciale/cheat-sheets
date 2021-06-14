@@ -27,6 +27,9 @@ git notes add -m "ToDo: Fix stuff"
 git log
 git notes add --force -m "ToDone: Fixed stuff"
 
+# amend commit message and date
+git commit --amend --date="$(date -R)"
+
 # notes are local to a branch an are not copyed using merge
 # you need to copy them manually
 git notes copy <from> <to>
